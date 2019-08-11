@@ -11,3 +11,4 @@ package.json
 static/admin/
 db.sqlite3
 templates/
+names/
