@@ -1,0 +1,11 @@
+__pycache__/
+settings.py
+*.env
+*.pyc
+.vscode/
+activate
+activate.bat
+vscode/
+vscode.json
+package.json
+
