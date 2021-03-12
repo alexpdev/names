@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="all">
+    <div class="jumbotron">
+    <div class="container over">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 text">
+                    <h2 class="display-4">Baby Name Checker</h2>
+                    <p>Worried about what to name your baby on-the-way? Interested in what the most common names chosen over the years? Or maybe just bored and feel like searching how many times someone chose your name for their newborn?</p>
+                    <h3>We have all of that information!</h3>
+                    <p>Going all the way back to the late 1800's you can see the number of people with a given name throughout the last century and more!</p>
+                    <p class="lead">
+                        <span>
+                            <a class="btn btn-primary btn-lg" href="#" id="dont" role="button">Don't click this
+                                Button.</a>
+                            <em>seriously don't</em>
+                        </span>
+                    </p>
+                </div>
+                <div class="col-4 svg">
+                    <br>
+                    <img class="svg-img img-fluid" style="max-height: 100%" src="{% static 'img/download.svg' %}" alt="svg">
+                </div>
+            </div>
+            </div>
+    </div>
+    <form action="{% url 'index'%}" method="POST">
+        {% csrf_token %}
+        <div class="container">
+            <div class="wrapper">
+                <div class="form-row row">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="year">Year Start</label>
+                            <select class="form-control form-control" name="startyear" id="startyear">
+                                {% for key,value in years %}
+                                <option value="{{value}}">{{key}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="year">End</label>
+                            <select class="form-control form-control" name="endyear" id="endyear">
+                                {% for key,value in years %}
+                                <option value="{{value}}">{{key}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="sex">Boy/Girl</label>
+                            <select class="form-control form-control" name="sex" id="sex">
+                                {% for key,value in sex %}
+                                <option value="{{value}}">{{key}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <br>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <p>{{ data }}</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% include "table.html" %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}

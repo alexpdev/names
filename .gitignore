@@ -5,10 +5,5 @@ settings.py
 .vscode/
 activate
 activate.bat
-vscode/
-vscode.json
-package.json
 static/admin/
 db.sqlite3
-templates/
-names/

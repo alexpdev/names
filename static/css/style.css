@@ -1,0 +1,40 @@
+.form-row {
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.jumbotron {
+    background-color: #d7ebfda1;
+}
+
+.jumbotron h1 {
+    font-weight: bold;
+}
+
+.junmbotron p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    font-weight: bold;
+}
+
+.form-row {
+    border: 1px black solid;
+    background-color: rgb(226, 221, 221);
+}
+
+.wrapper {
+    box-shadow: 12px 14px 9px; rgb(66, 31, 31);
+}
+
+label {
+    font-weight: bolder;
+}
+
+.all {
+    background: linear-gradient(90deg, rgba(240,50,194,1) 0%, rgba(150,6,201,1) 46%, rgba(0,129,255,1) 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height:700px;
+    background-position: center;
+}

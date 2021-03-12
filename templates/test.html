@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3">Baby Name Checker</h1>
+            <p class="lead">Worried that you might be picking the wrong name for your kid? You don't want to be one of
+                the Sixteen to Twenty Thousand People that named their child this years most common name do you?</p>
+            <hr class="my-2">
+            <p>Simply type in name you are considering to find out how many times it was used in previous years</p>
+            <p>Optionaly select boy or girl, and the which year the data applys to.</p>
+            <p class="lead">
+                <span>
+                    <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Don't click this
+                        Button.</a>
+                    <em>seriously don't</em>
+                </span>
+            </p>
+        </div>
+    </div>
+    <form action="{% url 'index'%}" method="POST">
+        {% csrf_token %}
+        <div class="navbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="year">Year Start</label>
+                            <select class="form-control form-control" name="startyear" id="year">
+                                {% for key,value in years %}
+                                <option value="{{value}}">{{key}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="year">End</label>
+                            <select class="form-control form-control" name="endyear" id="year">
+                                {% for key,value in years %}
+                                <option value="{{value}}">{{key}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="BG">Boy/Girl</label>
+                            <select class="form-control form-control" name="BG" id="BG">
+                                {% for key,value in sex %}
+                                <option value="{{value}}">{{key}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="container">
+        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Boy/Girl</th>
+                <th>Amount</th>
+                <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for result in results %}
+                <td>{{ results.name }}</td>
+                <td>{{ results.sex }}</td>
+                <td>{{ results.count }}</td>
+                <td>{{ results.year }}</td>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

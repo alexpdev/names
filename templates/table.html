@@ -1,0 +1,21 @@
+{% load static %}
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Boy/Girl</th>
+                <th>Amount</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        {% for result in results %}
+        <tbody>
+            <tr>
+                <td>{{ result.name }}</td>
+                <td>{{ result.sex }}</td>
+                <td>{{ result.count }}</td>
+                <td>{{ result.year }}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
